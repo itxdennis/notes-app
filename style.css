@@ -171,7 +171,7 @@ textarea{
 display: flex;
 }
 
-#submitBtn, closeBtn{
+#submitBtn, #closeBtn{
     width: 100px;
     background-color: #8c53ff;
     color: #fff;
@@ -185,4 +185,28 @@ display: flex;
 
 #closeBtn{
     background-color: gainsboro;
+}
+
+/* extra *\
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+\*                */
+#editing_container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
 }
