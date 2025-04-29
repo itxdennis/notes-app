@@ -82,3 +82,47 @@ function editNote(noteId) {
     `;
   document.body.appendChild(editingPopup);
 }
+
+function closedEditPopup() {
+  const editingPopup = document.getElementById('editing-container');
+
+  if (editingPopup) {
+    editingPopup.remove();
+  }
+}
+
+function updateNote() {
+  const noteText = document.getElementById('note-text').value.trim();
+  const editingPopup = document.getElementById('editing-container');
+
+  if (noteText !== '') {
+    const noteId = editingPopup.getAttribute('date-note-id');
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+    // find the note to update
+    const updateNote = notes.map((note) => {
+      if (note.id == noteId) {
+        return { id: note.id, text: noteText };
+      }
+      return note;
+    });
+
+    // update the note in local storage
+    localStorage.setItem('notes', JSON.stringify(updatedNotes));
+
+    // close the editing popup
+    editingPopup.remove();
+
+    // refresh the displayed notes
+    displayNotes;
+  }
+}
+
+function deleteNote(noteId) {
+  let notes = JSON.parse(localStorage.getItem('notes')) || [];
+  notes = notes.filter((note) => note.id !== noteId);
+
+  localStorage.setItem('notes', JSON.stringify(notes));
+  displayNotes();
+}
+displayNotes();
